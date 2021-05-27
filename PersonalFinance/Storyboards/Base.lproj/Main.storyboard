@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oLH-Nd-nCf" userLabel="Logo Stack View">
+                                <rect key="frame" x="96.666666666666686" y="386.66666666666669" width="197" height="81"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtA-hX-RTg">
+                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="52.333333333333336"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="45"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoQ-ih-5LM">
+                                        <rect key="frame" x="0.0" y="53.333333333333307" width="84" height="27.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="1SH-Oi-HnS"/>
+                                    <constraint firstAttribute="width" constant="197" id="9Yb-sG-wm6"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oLH-Nd-nCf" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="7GF-hs-HKY"/>
+                            <constraint firstItem="oLH-Nd-nCf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ZZb-J1-jAk"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-146.37681159420291" y="79.6875"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="DU2-ac-sNy">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="crossDissolve" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="NXW-GC-h5q" customClass="PageViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ctP-AY-OfG"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0e4-nP-Ty9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620" y="80"/>
+        </scene>
+        <!--Content View Controller-->
+        <scene sceneID="Qmz-Mu-Beu">
+            <objects>
+                <viewController storyboardIdentifier="ContentViewController" id="PIs-Vc-KIH" customClass="ContentViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W4C-DP-U4H">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firstSlide" translatesAutoresizingMaskIntoConstraints="NO" id="IIa-nK-bvq">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y84-Co-avI">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ima-b5-Rxt">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ej0-mP-Pmq">
+                                            <rect key="frame" x="20" y="394" width="350" height="300"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="All your money in one app" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avl-MZ-85h">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="92.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="40"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See where all your money goues by easily adding your cash, credit cards, investments, and bills." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BI-GG-YgN">
+                                                    <rect key="frame" x="0.0" y="92.6666666666667" width="350" height="207.33333333333337"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="23"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="300" id="gxU-2l-eBm"/>
+                                            </constraints>
+                                        </stackView>
+                                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZNY-lz-06I">
+                                            <rect key="frame" x="134.33333333333334" y="786.66666666666663" width="121.33333333333334" height="27.333333333333371"/>
+                                            <color key="pageIndicatorTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="currentPageIndicatorTintColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </pageControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ej0-mP-Pmq" secondAttribute="trailing" constant="20" id="4ar-tb-HBu"/>
+                                        <constraint firstItem="ZNY-lz-06I" firstAttribute="centerX" secondItem="Ima-b5-Rxt" secondAttribute="centerX" id="7mD-8b-yP0"/>
+                                        <constraint firstItem="ej0-mP-Pmq" firstAttribute="leading" secondItem="Ima-b5-Rxt" secondAttribute="leading" constant="20" id="UGh-mE-Y8j"/>
+                                        <constraint firstAttribute="bottom" secondItem="ej0-mP-Pmq" secondAttribute="bottom" constant="150" id="Wfg-Wk-K00"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZNY-lz-06I" secondAttribute="bottom" constant="30" id="qQi-tE-FV8"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="systemThinMaterial"/>
+                            </visualEffectView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WQM-e6-Qc0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="IIa-nK-bvq" secondAttribute="bottom" id="6fG-L3-2iR"/>
+                            <constraint firstItem="IIa-nK-bvq" firstAttribute="leading" secondItem="WQM-e6-Qc0" secondAttribute="leading" id="Kc6-3e-QQz"/>
+                            <constraint firstItem="IIa-nK-bvq" firstAttribute="top" secondItem="W4C-DP-U4H" secondAttribute="top" id="LQf-Oz-Qoc"/>
+                            <constraint firstItem="IIa-nK-bvq" firstAttribute="trailing" secondItem="WQM-e6-Qc0" secondAttribute="trailing" id="d4A-G3-ey7"/>
+                            <constraint firstItem="Y84-Co-avI" firstAttribute="leading" secondItem="WQM-e6-Qc0" secondAttribute="leading" id="hCl-Jg-ELn"/>
+                            <constraint firstItem="Y84-Co-avI" firstAttribute="top" secondItem="W4C-DP-U4H" secondAttribute="top" id="i2z-Si-KtL"/>
+                            <constraint firstAttribute="bottom" secondItem="Y84-Co-avI" secondAttribute="bottom" id="v9Y-sQ-uvG"/>
+                            <constraint firstItem="Y84-Co-avI" firstAttribute="trailing" secondItem="WQM-e6-Qc0" secondAttribute="trailing" id="xXh-FU-CEP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="IIa-nK-bvq" id="amo-oI-6cR"/>
+                        <outlet property="descriptionLable" destination="6BI-GG-YgN" id="JmG-zC-FGK"/>
+                        <outlet property="pageControl" destination="ZNY-lz-06I" id="Idh-Iw-YGi"/>
+                        <outlet property="titleLable" destination="avl-MZ-85h" id="WnY-yK-VyV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IHm-3Z-uqK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1375" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="firstSlide" width="245" height="403"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
