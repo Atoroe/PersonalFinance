@@ -17,12 +17,13 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        let userDefaults = UserDefaults.standard
+//        let presentationWasViewed = userDefaults.bool(forKey: "presentationWasViewed")
+//        if presentationWasViewed == false {
+//            startPesentation()
+//        }
         
-        let userDefaults = UserDefaults.standard
-        let presentationWasViewed = userDefaults.bool(forKey: "presentationWasViewed")
-        if presentationWasViewed == false {
-            startPesentation()
-        }
+        startPesentation()
 
     }
     

@@ -24,7 +24,7 @@ class PageViewController: UIPageViewController {
         guard index < contents.count else {
             let userDefaults = UserDefaults.standard
             userDefaults.setValue(true, forKey: "presentationWasViewed")
-            dismiss(animated: true, completion: nil)
+            //showLoginViewController()
             return nil
         }
         guard let contentVC = storyboard?.instantiateViewController(identifier: "ContentViewController") as? ContentViewController else {
@@ -33,9 +33,19 @@ class PageViewController: UIPageViewController {
         contentVC.content = contents[index]
         contentVC.currentPage = index
         contentVC.numberOfPages = contents.count
+        if index == contents.count - 1 {
+            contentVC.isButtonHiden = false
+        }
         
         return contentVC
     }
+    
+//    private func showLoginViewController() {
+//        guard let loginVC = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else { return }
+//            loginVC.modalPresentationStyle = .fullScreen
+//            present(loginVC, animated: true, completion: nil)
+//
+//    }
     
     private func showFirstViewController() {
         if let contentVC = showViewControllerAtIndex(0) {

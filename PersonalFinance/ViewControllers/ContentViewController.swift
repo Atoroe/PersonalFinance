@@ -13,15 +13,21 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var descriptionLable: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var exploreTheAppButton: UIButton!
     
     var content: Content?
     var numberOfPages = 0
     var currentPage = 0
+    var isButtonHiden = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initUI()
+    }
+    
+    @IBAction func exploreTheAppTouched() {
+        showLoginViewController()
     }
     
     private func initUI() {
@@ -31,6 +37,14 @@ class ContentViewController: UIViewController {
         descriptionLable.text = content.description
         pageControl.currentPage = currentPage
         pageControl.numberOfPages = numberOfPages
+        exploreTheAppButton.isHidden = isButtonHiden ? true : false
+    }
+    
+    private func showLoginViewController() {
+        guard let loginVC = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else { return }
+            loginVC.modalPresentationStyle = .fullScreen
+            present(loginVC, animated: true, completion: nil)
+         
     }
 
 }

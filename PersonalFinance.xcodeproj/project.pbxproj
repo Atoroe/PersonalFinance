@@ -19,6 +19,7 @@
 		E35CE4C8265BF0D200898909 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CE4C7265BF0D200898909 /* Extension + UIView.swift */; };
 		E3A0709C265E788A0063F468 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A0709B265E788A0063F468 /* Content.swift */; };
 		E3A0709F265E7A5A0063F468 /* ContentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A0709E265E7A5A0063F468 /* ContentDataManager.swift */; };
+		E3D6702226612CCB00232115 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D6702126612CCB00232115 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E35CE4C7265BF0D200898909 /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 		E3A0709B265E788A0063F468 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		E3A0709E265E7A5A0063F468 /* ContentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDataManager.swift; sourceTree = "<group>"; };
+		E3D6702126612CCB00232115 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				E35CE4AA265BED3500898909 /* WelcomeViewController.swift */,
 				E3219943265FD1B8003233A0 /* ContentViewController.swift */,
 				E3219946265FD22B003233A0 /* PageViewController.swift */,
+				E3D6702126612CCB00232115 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				E35CE4C8265BF0D200898909 /* Extension + UIView.swift in Sources */,
 				E3219947265FD22B003233A0 /* PageViewController.swift in Sources */,
 				E35CE4A9265BED3500898909 /* SceneDelegate.swift in Sources */,
+				E3D6702226612CCB00232115 /* LoginViewController.swift in Sources */,
 				E3A0709C265E788A0063F468 /* Content.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
