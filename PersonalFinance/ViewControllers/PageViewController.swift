@@ -22,9 +22,7 @@ class PageViewController: UIPageViewController {
     private func showViewControllerAtIndex(_ index: Int) -> ContentViewController? {
         guard index >= 0 else { return nil }
         guard index < contents.count else {
-            let userDefaults = UserDefaults.standard
-            userDefaults.setValue(true, forKey: "presentationWasViewed")
-            //showLoginViewController()
+            DataManager.shared.presentationWasViewed()
             return nil
         }
         guard let contentVC = storyboard?.instantiateViewController(identifier: "ContentViewController") as? ContentViewController else {
@@ -39,13 +37,7 @@ class PageViewController: UIPageViewController {
         
         return contentVC
     }
-    
-//    private func showLoginViewController() {
-//        guard let loginVC = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else { return }
-//            loginVC.modalPresentationStyle = .fullScreen
-//            present(loginVC, animated: true, completion: nil)
-//
-//    }
+
     
     private func showFirstViewController() {
         if let contentVC = showViewControllerAtIndex(0) {

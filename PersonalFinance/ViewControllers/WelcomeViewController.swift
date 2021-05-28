@@ -17,13 +17,12 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        let userDefaults = UserDefaults.standard
-//        let presentationWasViewed = userDefaults.bool(forKey: "presentationWasViewed")
-//        if presentationWasViewed == false {
-//            startPesentation()
-//        }
-        
-        startPesentation()
+
+        if DataManager.shared.isPresentationViewed() {
+            showLoginViewController()
+        } else {
+            startPesentation()
+        }
 
     }
     
@@ -35,6 +34,13 @@ class WelcomeViewController: UIViewController {
                 self.present(pageVC, animated: true, completion: nil)
             }
         }
+    }
+    
+    private func showLoginViewController() {
+        guard let loginVC = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else { return }
+            loginVC.modalPresentationStyle = .fullScreen
+            present(loginVC, animated: true, completion: nil)
+         
     }
 }
 
