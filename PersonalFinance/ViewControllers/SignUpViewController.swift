@@ -1,19 +1,20 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  PersonalFinance
 //
-//  Created by Artiom Poluyanovich on 28.05.21.
+//  Created by Artiom Poluyanovich on 30.05.21.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignInViewController: UIViewController {
     
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var eyeImage: UIImageView!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var userNameContainerView: UIView!
     @IBOutlet weak var emailContainerView: UIView!
     @IBOutlet weak var passwordContainerView: UIView!
     @IBOutlet weak var mainContainerHeight: NSLayoutConstraint!
@@ -33,44 +34,17 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        addGradient(views: view, loginButton, facebookButton)
-        setContanerViews(views: emailContainerView, passwordContainerView)
-        setButtons()
+        addGradient(views: view, signUpButton)
+        setContanerViews(views: userNameContainerView, emailContainerView, passwordContainerView)
+        signUpButton.layer.cornerRadius = 4
     }
     
-    @IBAction func loginTouched() {
-
-    }
-    
-    @IBAction func forgetPassTouched() {
-        guard let forgetPasswordVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ForgetPasswordViewController") as? ForgetPasswordViewController else  { return }
-        forgetPasswordVC.title = "Forget Password"
-        self.navigationController?.pushViewControllerWithWaveTransition(to: forgetPasswordVC)
-    }
-    
-    class newVC: UIViewController {
-        
-        override func viewDidLoad() {
-            super .viewDidLoad()
-            
-            view.backgroundColor = .red
-        }
-    }
-    
-    @IBAction func createAnAccountTouched() {
-        emailTextField.text = nil
-        passwordTextField.text = nil
-        showSignInViewController()
-    }
-    
-    @IBAction func facebookTouched() {
+    @IBAction func signUpTouched() {
         
     }
     
-    private func showSignInViewController() {
-        guard let signInVC = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController else { return }
-            signInVC.modalPresentationStyle = .fullScreen
-            present(signInVC, animated: true, completion: nil)
+    @IBAction func haveAnAccountTouched() {
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: Show or Hide passwordTF
@@ -91,16 +65,15 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
 }
 
-    //MARK: Init UI
-extension LoginViewController {
+//MARK: Init UI
+extension SignInViewController {
     private func addGradient(views: UIView...) {
         views.forEach { $0.addGradient(
             startPointColor: #colorLiteral(red: 0.03529411765, green: 0.07450980392, blue: 0.3803921569, alpha: 1),
             endPointColor: #colorLiteral(red: 0.007843137255, green: 0.02745098039, blue: 0.1843137255, alpha: 1)
-            )
+        )
         }
     }
     
@@ -115,15 +88,10 @@ extension LoginViewController {
             view.layer.cornerRadius = 4
         }
     }
-    
-    private func setButtons() {
-        loginButton.layer.cornerRadius = 4
-        facebookButton.layer.cornerRadius = 4
-    }
 }
 
 // MARK: - textField methods
-extension LoginViewController: UITextFieldDelegate {
+extension SignInViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
@@ -156,8 +124,9 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
+        resignFirstResponder()
         return true
     }
 }
+
 

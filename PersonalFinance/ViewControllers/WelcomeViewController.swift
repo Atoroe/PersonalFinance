@@ -37,10 +37,9 @@ class WelcomeViewController: UIViewController {
     }
     
     private func showLoginViewController() {
-        guard let loginVC = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else { return }
-            loginVC.modalPresentationStyle = .fullScreen
-            present(loginVC, animated: true, completion: nil)
-         
+        guard let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        let navigationController = UINavigationController(rootViewController: loginVC)
+        present(navigationController, animated:true, completion: nil)
     }
 }
 
