@@ -44,8 +44,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgetPassTouched() {
         guard let forgetPasswordVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ForgetPasswordViewController") as? ForgetPasswordViewController else  { return }
-        forgetPasswordVC.title = "Forget Password"
-        self.navigationController?.pushViewControllerWithWaveTransition(to: forgetPasswordVC)
+        navigationController?.pushViewController(forgetPasswordVC, animated: true)
     }
     
     class newVC: UIViewController {
@@ -69,8 +68,8 @@ class LoginViewController: UIViewController {
     
     private func showSignInViewController() {
         guard let signInVC = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController else { return }
-            signInVC.modalPresentationStyle = .fullScreen
-            present(signInVC, animated: true, completion: nil)
+        signInVC.modalPresentationStyle = .fullScreen
+        present(signInVC, animated: true, completion: nil)
     }
     
     //MARK: Show or Hide passwordTF

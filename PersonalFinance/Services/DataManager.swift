@@ -13,7 +13,7 @@ class DataManager {
     let userDefaults = UserDefaults.standard
  
     func presentationWasViewed() {
-        userDefaults.setValue(false, forKey: "presentationWasViewed")
+        userDefaults.setValue(true, forKey: "presentationWasViewed")
     }
     
     func isPresentationViewed() -> Bool {

@@ -17,7 +17,6 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         if DataManager.shared.isPresentationViewed() {
             showLoginViewController()
         } else {
@@ -39,6 +38,8 @@ class WelcomeViewController: UIViewController {
     private func showLoginViewController() {
         guard let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
         let navigationController = UINavigationController(rootViewController: loginVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.isNavigationBarHidden = true
         present(navigationController, animated:true, completion: nil)
     }
 }
