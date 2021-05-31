@@ -38,6 +38,11 @@ class LoginViewController: UIViewController {
         setButtons()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     @IBAction func loginTouched() {
 
     }
@@ -118,6 +123,10 @@ extension LoginViewController {
     private func setButtons() {
         loginButton.layer.cornerRadius = 4
         facebookButton.layer.cornerRadius = 4
+//        facebookButton.setTitle("Facebook", for: .normal)
+//        let image = UIImage(named: "facebook")
+//        facebookButton.setImage(UIImage(named: "facebook"), for: .normal)
+//        facebookButton.imageEdgeInsets.left = -50
     }
 }
 

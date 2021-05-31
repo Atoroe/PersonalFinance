@@ -23,6 +23,7 @@
 		E3D6702226612CCB00232115 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D6702126612CCB00232115 /* LoginViewController.swift */; };
 		E3D67025266138FF00232115 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D67024266138FF00232115 /* DataManager.swift */; };
 		E3E9742326642DFF00575D4D /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9742226642DFF00575D4D /* ForgetPasswordViewController.swift */; };
+		E3E9742526651B4700575D4D /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9742426651B4700575D4D /* ConfirmCodeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		E3D6702126612CCB00232115 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E3D67024266138FF00232115 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		E3E9742226642DFF00575D4D /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
+		E3E9742426651B4700575D4D /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				E3D6702126612CCB00232115 /* LoginViewController.swift */,
 				E350AD0D2663CBD9008AB964 /* SignUpViewController.swift */,
 				E3E9742226642DFF00575D4D /* ForgetPasswordViewController.swift */,
+				E3E9742426651B4700575D4D /* ConfirmCodeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				E35CE4C8265BF0D200898909 /* Extension + UIView.swift in Sources */,
 				E350AD0E2663CBD9008AB964 /* SignUpViewController.swift in Sources */,
 				E3E9742326642DFF00575D4D /* ForgetPasswordViewController.swift in Sources */,
+				E3E9742526651B4700575D4D /* ConfirmCodeViewController.swift in Sources */,
 				E3219947265FD22B003233A0 /* PageViewController.swift in Sources */,
 				E35CE4A9265BED3500898909 /* SceneDelegate.swift in Sources */,
 				E3D67025266138FF00232115 /* DataManager.swift in Sources */,
