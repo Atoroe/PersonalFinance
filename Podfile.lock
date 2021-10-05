@@ -1,0 +1,22 @@
+PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - Locksmith (4.0.0)
+
+DEPENDENCIES:
+  - Charts
+  - Locksmith
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - Locksmith
+
+SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
+
+PODFILE CHECKSUM: 6ac3ac4ed77aee3c56b928014ebebd8598047ce9
+
+COCOAPODS: 1.8.4

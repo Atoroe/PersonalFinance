@@ -10,12 +10,12 @@ import UIKit
 class PageViewController: UIPageViewController {
     
     let contents = Content.getContents()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dataSource = self
-
+        
         showFirstViewController()
     }
     
@@ -37,7 +37,7 @@ class PageViewController: UIPageViewController {
         
         return contentVC
     }
-
+    
     
     private func showFirstViewController() {
         if let contentVC = showViewControllerAtIndex(0) {
@@ -68,5 +68,3 @@ extension PageViewController: UIPageViewControllerDataSource {
         return showViewControllerAtIndex(pageNumber)
     }
 }
-
-

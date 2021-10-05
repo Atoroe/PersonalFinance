@@ -19,18 +19,18 @@ class ContentViewController: UIViewController {
     var numberOfPages = 0
     var currentPage = 0
     var isButtonHiden = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        initUI()
+        
+        setUI()
     }
     
     @IBAction func exploreTheAppTouched() {
         showLoginViewController()
     }
     
-    private func initUI() {
+    private func setUI() {
         guard let content = content else { return }
         backgroundImage.image = UIImage(named: content.backgroundImage)
         titleLable.text = content.title
@@ -42,8 +42,8 @@ class ContentViewController: UIViewController {
     
     private func showLoginViewController() {
         guard let loginVC = storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else { return }
-            loginVC.modalPresentationStyle = .fullScreen
-            present(loginVC, animated: true, completion: nil)
+        loginVC.modalPresentationStyle = .fullScreen
+        present(loginVC, animated: true, completion: nil)
     }
-
+    
 }

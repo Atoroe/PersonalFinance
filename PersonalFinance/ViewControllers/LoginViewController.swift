@@ -9,13 +9,17 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBOutlet weak var eyeImage: UIImageView!
+    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var facebookButton: UIButton!
-    @IBOutlet weak var emailContainerView: UIView!
+    
+    @IBOutlet weak var loginContainerView: UIView!
     @IBOutlet weak var passwordContainerView: UIView!
+    
     @IBOutlet weak var mainContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintHeight: NSLayoutConstraint!
     
@@ -30,11 +34,14 @@ class LoginViewController: UIViewController {
         inintialMainContainerHeight = mainContainerHeight.constant
         initialConstraintHeight = bottomConstraintHeight.constant
         registerForKeyboardNotifications()
+        navigationItem.backButtonTitle = ""
+        
+        AuthorizationManager.shared.printDictionary()
     }
     
     override func viewWillLayoutSubviews() {
         addGradient(views: view, loginButton, facebookButton)
-        setContanerViews(views: emailContainerView, passwordContainerView)
+        setContanerViews(views: loginContainerView, passwordContainerView)
         setButtons()
     }
     
@@ -44,7 +51,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTouched() {
-
+        signIn()
     }
     
     @IBAction func forgetPassTouched() {
@@ -52,27 +59,37 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(forgetPasswordVC, animated: true)
     }
     
-    class newVC: UIViewController {
-        
-        override func viewDidLoad() {
-            super .viewDidLoad()
-            
-            view.backgroundColor = .red
-        }
-    }
-    
     @IBAction func createAnAccountTouched() {
-        emailTextField.text = nil
+        loginTextField.text = nil
         passwordTextField.text = nil
-        showSignInViewController()
+        showSignUpViewController()
     }
     
     @IBAction func facebookTouched() {
         
     }
     
-    private func showSignInViewController() {
-        guard let signInVC = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController else { return }
+    //MARK: Autorization
+    private func signIn() {
+        guard let login = loginTextField.text, !login.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+                  setRedBorderFor(views: loginContainerView, passwordContainerView)
+                  return
+              }
+        AuthorizationManager.shared.checkAccount(by: login, and: password) { isValidation in
+            print(isValidation)
+            if isValidation {
+                loginTextField.text = nil
+                passwordTextField.text = nil
+                switchToHomeSB()
+            } else {
+                setRedBorderFor(views: loginContainerView, passwordContainerView)
+            }
+        }
+    }
+    
+    private func showSignUpViewController() {
+        guard let signInVC = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignUpViewController else { return }
         signInVC.modalPresentationStyle = .fullScreen
         present(signInVC, animated: true, completion: nil)
     }
@@ -98,13 +115,13 @@ class LoginViewController: UIViewController {
     
 }
 
-    //MARK: Init UI
+//MARK: Set UI
 extension LoginViewController {
     private func addGradient(views: UIView...) {
         views.forEach { $0.addGradient(
             startPointColor: #colorLiteral(red: 0.03529411765, green: 0.07450980392, blue: 0.3803921569, alpha: 1),
             endPointColor: #colorLiteral(red: 0.007843137255, green: 0.02745098039, blue: 0.1843137255, alpha: 1)
-            )
+        )
         }
     }
     
@@ -123,10 +140,24 @@ extension LoginViewController {
     private func setButtons() {
         loginButton.layer.cornerRadius = 4
         facebookButton.layer.cornerRadius = 4
-//        facebookButton.setTitle("Facebook", for: .normal)
-//        let image = UIImage(named: "facebook")
-//        facebookButton.setImage(UIImage(named: "facebook"), for: .normal)
-//        facebookButton.imageEdgeInsets.left = -50
+        //        facebookButton.setTitle("Facebook", for: .normal)
+        //        let image = UIImage(named: "facebook")
+        //        facebookButton.setImage(UIImage(named: "facebook"), for: .normal)
+        //        facebookButton.imageEdgeInsets.left = -50
+    }
+    
+    private func setRedBorderFor(views: UIView...) {
+        views.forEach { view in
+            view.layer.borderColor = CGColor.init(red: 1.0, green: 0.0, blue: 0.0, alpha: 1)
+        }
+    }
+    
+    //MARK: - show HomeVC
+    private func switchToHomeSB() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeTabBarController = storyboard.instantiateViewController(identifier: "HomeTabBarController")
+        homeTabBarController.modalPresentationStyle = .fullScreen
+        self.present(homeTabBarController, animated: true, completion: nil)
     }
 }
 
@@ -164,7 +195,11 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
+        if textField == loginTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            signIn()
+        }
         return true
     }
 }
