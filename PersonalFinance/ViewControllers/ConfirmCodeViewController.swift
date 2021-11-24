@@ -1,10 +1,3 @@
-//
-//  ConfirmCodeViewController.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 31.05.21.
-//
-
 import UIKit
 
 class ConfirmCodeViewController: UIViewController {

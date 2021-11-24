@@ -1,10 +1,3 @@
-//
-//  ContentViewController.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 27.05.21.
-//
-
 import UIKit
 
 class ContentViewController: UIViewController {

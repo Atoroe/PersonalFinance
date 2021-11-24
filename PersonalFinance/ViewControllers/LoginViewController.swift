@@ -1,11 +1,4 @@
-//
-//  LoginViewController.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 28.05.21.
-//
-
-import UIKit
+import AuthenticationServices
 
 class LoginViewController: UIViewController {
     
@@ -15,7 +8,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var eyeImage: UIImageView!
     
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var appleLogInButton: UIButton!
     
     @IBOutlet weak var loginContainerView: UIView!
     @IBOutlet weak var passwordContainerView: UIView!
@@ -40,14 +33,14 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        addGradient(views: view, loginButton, facebookButton)
+        addGradient(views: view, loginButton)
         setContanerViews(views: loginContainerView, passwordContainerView)
         setButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.isNavigationBarHidden = true
     }
     
     @IBAction func loginTouched() {
@@ -65,8 +58,13 @@ class LoginViewController: UIViewController {
         showSignUpViewController()
     }
     
-    @IBAction func facebookTouched() {
-        
+    @IBAction func appleLogInButtonTouched() {
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.performRequests()
     }
     
     //MARK: Autorization
@@ -81,17 +79,25 @@ class LoginViewController: UIViewController {
             if isValidation {
                 loginTextField.text = nil
                 passwordTextField.text = nil
-                switchToHomeSB()
+                showHomeVC()
             } else {
                 setRedBorderFor(views: loginContainerView, passwordContainerView)
             }
         }
     }
     
+    //MARK: - Navigation
     private func showSignUpViewController() {
         guard let signInVC = storyboard?.instantiateViewController(withIdentifier: "SignInViewController") as? SignUpViewController else { return }
         signInVC.modalPresentationStyle = .fullScreen
         present(signInVC, animated: true, completion: nil)
+    }
+    
+    private func showHomeVC() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        guard let tabBarVC = storyboard.instantiateViewController(withIdentifier: "HomeTabBarController") as? UITabBarController else { return }
+        tabBarVC.modalPresentationStyle = .fullScreen
+        self.present(tabBarVC, animated: true, completion: nil)
     }
     
     //MARK: Show or Hide passwordTF
@@ -139,25 +145,14 @@ extension LoginViewController {
     
     private func setButtons() {
         loginButton.layer.cornerRadius = 4
-        facebookButton.layer.cornerRadius = 4
-        //        facebookButton.setTitle("Facebook", for: .normal)
-        //        let image = UIImage(named: "facebook")
-        //        facebookButton.setImage(UIImage(named: "facebook"), for: .normal)
-        //        facebookButton.imageEdgeInsets.left = -50
+        appleLogInButton.layer.cornerRadius = appleLogInButton.frame.width / 2
+        appleLogInButton.imageView?.contentMode = .scaleAspectFit
     }
     
     private func setRedBorderFor(views: UIView...) {
         views.forEach { view in
             view.layer.borderColor = CGColor.init(red: 1.0, green: 0.0, blue: 0.0, alpha: 1)
         }
-    }
-    
-    //MARK: - show HomeVC
-    private func switchToHomeSB() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeTabBarController = storyboard.instantiateViewController(identifier: "HomeTabBarController")
-        homeTabBarController.modalPresentationStyle = .fullScreen
-        self.present(homeTabBarController, animated: true, completion: nil)
     }
 }
 
@@ -204,3 +199,19 @@ extension LoginViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - apple ID authorization
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case _ as ASAuthorizationAppleIDCredential:
+            showHomeVC()
+            break
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print(error.localizedDescription)
+    }
+}

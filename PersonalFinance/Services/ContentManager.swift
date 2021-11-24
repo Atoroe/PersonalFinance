@@ -1,12 +1,5 @@
-//
-//  PageViewDataManager.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 26.05.21.
-//
-
-class ContentDataManager {
-    static let shared = ContentDataManager()
+class ContentManager {
+    static let shared = ContentManager()
     
     let backgRoundImages = [
         "firstSlide",

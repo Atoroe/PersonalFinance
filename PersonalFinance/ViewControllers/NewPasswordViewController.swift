@@ -1,10 +1,3 @@
-//
-//  NewPasswordViewController.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 1.10.21.
-//
-
 import UIKit
 
 class NewPasswordViewController: UIViewController {

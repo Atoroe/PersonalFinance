@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -343,19 +343,20 @@
                                             <constraint firstItem="9Hz-BC-uAY" firstAttribute="height" secondItem="4tR-tJ-Sig" secondAttribute="height" id="jbl-36-jAW"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ng-IE-eEZ">
-                                        <rect key="frame" x="20" y="353" width="335" height="56"/>
-                                        <color key="backgroundColor" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ng-IE-eEZ">
+                                        <rect key="frame" x="159.5" y="353" width="56" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="Amx-xW-c52"/>
                                             <constraint firstAttribute="height" constant="56" id="fgZ-5e-lC0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
-                                        <state key="normal" title="Facebook">
+                                        <state key="normal" image="appleLogo">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="facebookTouched" destination="CqP-oJ-Fxc" eventType="touchUpInside" id="mC8-if-mYi"/>
+                                            <action selector="appleLogInButtonTouched" destination="CqP-oJ-Fxc" eventType="touchUpInside" id="zn7-8h-Cli"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or Log in using" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYr-Qe-vQI">
@@ -369,12 +370,11 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="CrW-56-Bak" secondAttribute="bottom" constant="179" id="6IQ-Nx-4Jz"/>
                                     <constraint firstItem="CrW-56-Bak" firstAttribute="leading" secondItem="6Tp-5d-MU4" secondAttribute="leading" constant="20" id="8WT-JI-Vba"/>
-                                    <constraint firstAttribute="trailing" secondItem="5ng-IE-eEZ" secondAttribute="trailing" constant="20" symbolic="YES" id="DXi-om-lGy"/>
                                     <constraint firstItem="CrW-56-Bak" firstAttribute="top" secondItem="6Tp-5d-MU4" secondAttribute="top" constant="20" id="GsR-Tl-f8g"/>
-                                    <constraint firstItem="5ng-IE-eEZ" firstAttribute="leading" secondItem="6Tp-5d-MU4" secondAttribute="leading" constant="20" symbolic="YES" id="KzT-Om-IG9"/>
                                     <constraint firstAttribute="trailing" secondItem="CrW-56-Bak" secondAttribute="trailing" constant="20" id="LSv-yZ-w0R"/>
                                     <constraint firstAttribute="bottom" secondItem="5ng-IE-eEZ" secondAttribute="bottom" constant="50" id="bai-KM-YCX"/>
                                     <constraint firstAttribute="height" constant="459" id="dAO-Cr-OTb"/>
+                                    <constraint firstItem="5ng-IE-eEZ" firstAttribute="centerX" secondItem="6Tp-5d-MU4" secondAttribute="centerX" id="meF-t6-Il6"/>
                                     <constraint firstItem="aYr-Qe-vQI" firstAttribute="centerX" secondItem="5ng-IE-eEZ" secondAttribute="centerX" id="p81-3M-iBS"/>
                                     <constraint firstItem="5ng-IE-eEZ" firstAttribute="top" secondItem="aYr-Qe-vQI" secondAttribute="bottom" constant="13" id="tbV-9O-ccx"/>
                                 </constraints>
@@ -400,9 +400,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Jmj-7J-s90"/>
                     <connections>
+                        <outlet property="appleLogInButton" destination="5ng-IE-eEZ" id="Pff-1M-t0Y"/>
                         <outlet property="bottomConstraintHeight" destination="6IQ-Nx-4Jz" id="lsV-Uh-2TV"/>
                         <outlet property="eyeImage" destination="qXI-WL-ui0" id="Uyl-Yr-WAK"/>
-                        <outlet property="facebookButton" destination="5ng-IE-eEZ" id="CQC-Z7-SQ1"/>
                         <outlet property="loginButton" destination="KAU-Qx-frB" id="r3S-hS-AXq"/>
                         <outlet property="loginContainerView" destination="4tR-tJ-Sig" id="eu9-on-6UM"/>
                         <outlet property="loginTextField" destination="woE-wT-ztf" id="fBz-T9-axi"/>
@@ -1100,6 +1100,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="appleLogo" width="1710" height="1893"/>
         <image name="eye-off" width="18" height="18"/>
         <image name="firstSlide" width="245" height="403"/>
         <image name="lock-line" width="16" height="16"/>

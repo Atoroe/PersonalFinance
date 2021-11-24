@@ -10,6 +10,7 @@
 		45126749102707701CCCABA7 /* Pods_PersonalFinance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9185C396E519E2F424D7B363 /* Pods_PersonalFinance.framework */; };
 		E3219944265FD1B8003233A0 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3219943265FD1B8003233A0 /* ContentViewController.swift */; };
 		E3219947265FD22B003233A0 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3219946265FD22B003233A0 /* PageViewController.swift */; };
+		E327DE2D2710D34800C1F8BD /* SaveWalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E327DE2C2710D34800C1F8BD /* SaveWalletTableViewController.swift */; };
 		E339F146270717F300B16689 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E339F145270717F300B16689 /* NewPasswordViewController.swift */; };
 		E343A6AC270B54A100C97DE7 /* UINavigationBarGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E343A6AB270B54A100C97DE7 /* UINavigationBarGradientView.swift */; };
 		E3475FBD26C6948500646398 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3475FBC26C6948500646398 /* AuthorizationManager.swift */; };
@@ -18,7 +19,6 @@
 		E3475FC626D5063B00646398 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3475FC526D5063B00646398 /* HomeViewController.swift */; };
 		E350AD0E2663CBD9008AB964 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350AD0D2663CBD9008AB964 /* SignUpViewController.swift */; };
 		E35CE4A7265BED3500898909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CE4A6265BED3500898909 /* AppDelegate.swift */; };
-		E35CE4A9265BED3500898909 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CE4A8265BED3500898909 /* SceneDelegate.swift */; };
 		E35CE4AB265BED3500898909 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CE4AA265BED3500898909 /* WelcomeViewController.swift */; };
 		E35CE4AE265BED3500898909 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E35CE4AC265BED3500898909 /* Main.storyboard */; };
 		E35CE4B1265BED3500898909 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E35CE4AF265BED3500898909 /* PersonalFinance.xcdatamodeld */; };
@@ -27,10 +27,19 @@
 		E35CE4C8265BF0D200898909 /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CE4C7265BF0D200898909 /* Extension + UIView.swift */; };
 		E37EC38A26C58F1F00E0A53B /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37EC38926C58F1F00E0A53B /* Account.swift */; };
 		E38BED852703553E00385911 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38BED842703553E00385911 /* NetworkManager.swift */; };
+		E39F08032717780E00F0E682 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39F08012717780E00F0E682 /* TextFieldTableViewCell.swift */; };
+		E39F08042717780E00F0E682 /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39F08022717780E00F0E682 /* TextFieldTableViewCell.xib */; };
+		E39F0806271ED37900F0E682 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39F0805271ED37900F0E682 /* ReportViewController.swift */; };
 		E3A0709C265E788A0063F468 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A0709B265E788A0063F468 /* Content.swift */; };
-		E3A0709F265E7A5A0063F468 /* ContentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A0709E265E7A5A0063F468 /* ContentDataManager.swift */; };
+		E3A0709F265E7A5A0063F468 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A0709E265E7A5A0063F468 /* ContentManager.swift */; };
+		E3A0DE21271ED994004F7560 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A0DE20271ED994004F7560 /* MoreTableViewController.swift */; };
+		E3A0DE23271F0E31004F7560 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A0DE22271F0E30004F7560 /* UserSettingViewController.swift */; };
+		E3BB727127107D100077586C /* FinanceStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB727027107D100077586C /* FinanceStorageManager.swift */; };
 		E3D6702226612CCB00232115 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D6702126612CCB00232115 /* LoginViewController.swift */; };
 		E3D67025266138FF00232115 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D67024266138FF00232115 /* DataManager.swift */; };
+		E3DA19E627109504008DD996 /* WalletsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DA19E527109504008DD996 /* WalletsTableViewController.swift */; };
+		E3E6E3832714532400608898 /* Purse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6E3822714532400608898 /* Purse.swift */; };
+		E3E6E3852714565700608898 /* PurseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E6E3842714565700608898 /* PurseManager.swift */; };
 		E3E9742326642DFF00575D4D /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9742226642DFF00575D4D /* ForgetPasswordViewController.swift */; };
 		E3E9742526651B4700575D4D /* ConfirmCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E9742426651B4700575D4D /* ConfirmCodeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +50,7 @@
 		9185C396E519E2F424D7B363 /* Pods_PersonalFinance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalFinance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3219943265FD1B8003233A0 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		E3219946265FD22B003233A0 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		E327DE2C2710D34800C1F8BD /* SaveWalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveWalletTableViewController.swift; sourceTree = "<group>"; };
 		E339F145270717F300B16689 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
 		E343A6AB270B54A100C97DE7 /* UINavigationBarGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarGradientView.swift; sourceTree = "<group>"; };
 		E3475FBC26C6948500646398 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
@@ -51,7 +61,6 @@
 		E350AD0D2663CBD9008AB964 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E35CE4A3265BED3500898909 /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35CE4A6265BED3500898909 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E35CE4A8265BED3500898909 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E35CE4AA265BED3500898909 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E35CE4AD265BED3500898909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E35CE4B0265BED3500898909 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
@@ -61,10 +70,19 @@
 		E35CE4C7265BF0D200898909 /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 		E37EC38926C58F1F00E0A53B /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		E38BED842703553E00385911 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E39F08012717780E00F0E682 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		E39F08022717780E00F0E682 /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		E39F0805271ED37900F0E682 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		E3A0709B265E788A0063F468 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
-		E3A0709E265E7A5A0063F468 /* ContentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDataManager.swift; sourceTree = "<group>"; };
+		E3A0709E265E7A5A0063F468 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		E3A0DE20271ED994004F7560 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		E3A0DE22271F0E30004F7560 /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
+		E3BB727027107D100077586C /* FinanceStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceStorageManager.swift; sourceTree = "<group>"; };
 		E3D6702126612CCB00232115 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E3D67024266138FF00232115 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		E3DA19E527109504008DD996 /* WalletsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsTableViewController.swift; sourceTree = "<group>"; };
+		E3E6E3822714532400608898 /* Purse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purse.swift; sourceTree = "<group>"; };
+		E3E6E3842714565700608898 /* PurseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurseManager.swift; sourceTree = "<group>"; };
 		E3E9742226642DFF00575D4D /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		E3E9742426651B4700575D4D /* ConfirmCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +180,11 @@
 				E3E9742426651B4700575D4D /* ConfirmCodeViewController.swift */,
 				E339F145270717F300B16689 /* NewPasswordViewController.swift */,
 				E3475FC526D5063B00646398 /* HomeViewController.swift */,
+				E3DA19E527109504008DD996 /* WalletsTableViewController.swift */,
+				E327DE2C2710D34800C1F8BD /* SaveWalletTableViewController.swift */,
+				E39F0805271ED37900F0E682 /* ReportViewController.swift */,
+				E3A0DE20271ED994004F7560 /* MoreTableViewController.swift */,
+				E3A0DE22271F0E30004F7560 /* UserSettingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -170,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				E35CE4A6265BED3500898909 /* AppDelegate.swift */,
-				E35CE4A8265BED3500898909 /* SceneDelegate.swift */,
 				E35CE4B7265BED3D00898909 /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -179,10 +201,12 @@
 		E35CE4C3265BEDFF00898909 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E3A0709E265E7A5A0063F468 /* ContentDataManager.swift */,
+				E3A0709E265E7A5A0063F468 /* ContentManager.swift */,
 				E3D67024266138FF00232115 /* DataManager.swift */,
 				E3475FBC26C6948500646398 /* AuthorizationManager.swift */,
 				E38BED842703553E00385911 /* NetworkManager.swift */,
+				E3BB727027107D100077586C /* FinanceStorageManager.swift */,
+				E3E6E3842714565700608898 /* PurseManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -193,6 +217,7 @@
 				E35CE4AF265BED3500898909 /* PersonalFinance.xcdatamodeld */,
 				E3A0709B265E788A0063F468 /* Content.swift */,
 				E37EC38926C58F1F00E0A53B /* Account.swift */,
+				E3E6E3822714532400608898 /* Purse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +225,7 @@
 		E35CE4C5265BEE4A00898909 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E3A2702B27148C5700DBEBAD /* WalletTableViewCells */,
 				E343A6AB270B54A100C97DE7 /* UINavigationBarGradientView.swift */,
 			);
 			path = Views;
@@ -212,6 +238,15 @@
 				E3475FBE26CAE61500646398 /* Extension + String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E3A2702B27148C5700DBEBAD /* WalletTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E39F08012717780E00F0E682 /* TextFieldTableViewCell.swift */,
+				E39F08022717780E00F0E682 /* TextFieldTableViewCell.xib */,
+			);
+			path = WalletTableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E39F08042717780E00F0E682 /* TextFieldTableViewCell.xib in Resources */,
 				E35CE4B6265BED3D00898909 /* LaunchScreen.storyboard in Resources */,
 				E35CE4B3265BED3D00898909 /* Assets.xcassets in Resources */,
 				E35CE4AE265BED3500898909 /* Main.storyboard in Resources */,
@@ -329,26 +365,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3E6E3832714532400608898 /* Purse.swift in Sources */,
+				E3E6E3852714565700608898 /* PurseManager.swift in Sources */,
+				E39F08032717780E00F0E682 /* TextFieldTableViewCell.swift in Sources */,
 				E38BED852703553E00385911 /* NetworkManager.swift in Sources */,
 				E343A6AC270B54A100C97DE7 /* UINavigationBarGradientView.swift in Sources */,
 				E3219944265FD1B8003233A0 /* ContentViewController.swift in Sources */,
 				E3475FBD26C6948500646398 /* AuthorizationManager.swift in Sources */,
-				E3A0709F265E7A5A0063F468 /* ContentDataManager.swift in Sources */,
+				E3DA19E627109504008DD996 /* WalletsTableViewController.swift in Sources */,
+				E3A0709F265E7A5A0063F468 /* ContentManager.swift in Sources */,
 				E35CE4B1265BED3500898909 /* PersonalFinance.xcdatamodeld in Sources */,
+				E3A0DE21271ED994004F7560 /* MoreTableViewController.swift in Sources */,
+				E3BB727127107D100077586C /* FinanceStorageManager.swift in Sources */,
 				E35CE4AB265BED3500898909 /* WelcomeViewController.swift in Sources */,
 				E3475FC626D5063B00646398 /* HomeViewController.swift in Sources */,
 				E35CE4A7265BED3500898909 /* AppDelegate.swift in Sources */,
+				E39F0806271ED37900F0E682 /* ReportViewController.swift in Sources */,
 				E37EC38A26C58F1F00E0A53B /* Account.swift in Sources */,
+				E3A0DE23271F0E31004F7560 /* UserSettingViewController.swift in Sources */,
 				E35CE4C8265BF0D200898909 /* Extension + UIView.swift in Sources */,
 				E350AD0E2663CBD9008AB964 /* SignUpViewController.swift in Sources */,
 				E3E9742326642DFF00575D4D /* ForgetPasswordViewController.swift in Sources */,
 				E3E9742526651B4700575D4D /* ConfirmCodeViewController.swift in Sources */,
 				E3219947265FD22B003233A0 /* PageViewController.swift in Sources */,
-				E35CE4A9265BED3500898909 /* SceneDelegate.swift in Sources */,
 				E3D67025266138FF00232115 /* DataManager.swift in Sources */,
 				E3D6702226612CCB00232115 /* LoginViewController.swift in Sources */,
 				E3475FBF26CAE61500646398 /* Extension + String.swift in Sources */,
 				E339F146270717F300B16689 /* NewPasswordViewController.swift in Sources */,
+				E327DE2D2710D34800C1F8BD /* SaveWalletTableViewController.swift in Sources */,
 				E3A0709C265E788A0063F468 /* Content.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SK72H5U39;
 				INFOPLIST_FILE = PersonalFinance/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,7 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SK72H5U39;
 				INFOPLIST_FILE = PersonalFinance/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

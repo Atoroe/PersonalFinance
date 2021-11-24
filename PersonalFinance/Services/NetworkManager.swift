@@ -1,12 +1,4 @@
-//
-//  NetworkManager.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 28.09.21.
-//
-
 import Foundation
-import CryptoKit
 
 enum URLS: String {
     case rocketSMSPostRequest = "http://api.rocketsms.by/simple/send"
@@ -23,7 +15,6 @@ class NetworkManager {
     //MARK: - POST to RocketSMS
     func postRequestToRocketSMS(phone: String, message: String, with complition: @escaping (Result<[String:Any], Error>) -> Void) {
         let url = "\(URLS.rocketSMSPostRequest.rawValue)?username=\(login)&password=\(passwordMD5Hash)&phone=\(phone)&text=\(message)"
-        //let url = "\(URLS.rocketSMSPostRequest.rawValue)?username=\(login)&password=\(passwordMD5Hash)"
         guard let url = URL(string: url) else { return }
         
         var request = URLRequest(url: url)

@@ -1,11 +1,4 @@
-//
-//  ForgetPasswordViewController.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 30.05.21.
-//
-
-import MessageUI
+import UIKit
 
 class ForgetPasswordViewController: UIViewController {
     
@@ -116,7 +109,7 @@ class ForgetPasswordViewController: UIViewController {
                 bundle: nil).instantiateViewController(withIdentifier: "ConfirmCodeViewController") as? ConfirmCodeViewController else  {
             return }
         confirmCodeVC.phoneNumber = fullPhoneNumber
-        self.navigationController?.pushViewController(confirmCodeVC, animated: true)
+        navigationController?.pushViewController(confirmCodeVC, animated: true)
         return
     }
 }

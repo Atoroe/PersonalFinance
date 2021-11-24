@@ -1,10 +1,3 @@
-//
-//  UINavigationBarGradientView.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 4.10.21.
-//
-
 import UIKit
 
 class UINavigationBarGradientView: UIView {

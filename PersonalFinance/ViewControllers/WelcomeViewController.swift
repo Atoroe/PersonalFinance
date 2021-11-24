@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 24.05.21.
-//
-
 import UIKit
 
 class WelcomeViewController: UIViewController {
@@ -22,6 +15,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
         if DataManager.shared.isPresentationViewed() {
             showLoginViewController()
+            //showHomeVC()
         } else {
             startPesentation()
         }
@@ -43,6 +37,17 @@ class WelcomeViewController: UIViewController {
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.isNavigationBarHidden = true
         present(navigationController, animated:true, completion: nil)
+    }
+    
+    //MARK: - ЗАГЛУШКА
+    private func showHomeVC() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        guard let navigationVC = storyboard.instantiateViewController(withIdentifier: "HomeNavigationViewController") as? UINavigationController else { return }
+//        navigationVC.modalPresentationStyle = .fullScreen
+//        self.present(navigationVC, animated: true, completion: nil)
+        guard let tabBarVC = storyboard.instantiateViewController(withIdentifier: "HomeTabBarController") as? UITabBarController else { return }
+        tabBarVC.modalPresentationStyle = .fullScreen
+        self.present(tabBarVC, animated: true, completion: nil)
     }
 }
 

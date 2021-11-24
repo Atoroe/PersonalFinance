@@ -1,10 +1,3 @@
-//
-//  UIVIew+Extension.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 24.05.21.
-//
-
 import UIKit
 
 extension UIView {

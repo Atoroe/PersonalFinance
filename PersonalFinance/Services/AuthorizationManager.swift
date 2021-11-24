@@ -1,9 +1,3 @@
-//
-//  AuthorizationManager.swift
-//  PersonalFinance
-//
-//  Created by Artiom Poluyanovich on 13.08.21.
-//
 import Locksmith
 
 enum keys: String {
@@ -24,11 +18,11 @@ class AuthorizationManager {
         guard let phoneNumber = account.phoneNumber else { return }
         do {
             try Locksmith.saveData(data: [
-                                    keys.login.rawValue: account.login,
-                                    keys.phoneNumber.rawValue: phoneNumber,
-                                    keys.password.rawValue: account.password,
-                                    keys.personalCode.rawValue: "\(Int.random(in: 1000...9999))"
-                                    ],
+                keys.login.rawValue: account.login,
+                keys.phoneNumber.rawValue: phoneNumber,
+                keys.password.rawValue: account.password,
+                keys.personalCode.rawValue: "\(Int.random(in: 1000...9999))"
+            ],
                                    forUserAccount: key )
             DataManager.shared.accountWasCreated()
             clouser(true)
@@ -39,38 +33,26 @@ class AuthorizationManager {
     }
     
     func checkAccount(by login: String, and password: String, clouser: (Bool) -> Void) {
-        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key),
-              let savedLogin = dictionary[keys.login.rawValue] as? String,
-              let savedPassword = dictionary[keys.password.rawValue] as? String else {
-            clouser(false)
-            return
-        }
-        if login == savedLogin && password == savedPassword {
+        let account = getAccount()
+        if login == account?.login && password == account?.password {
             clouser(true)
         } else {
             clouser(false)
         }
     }
     
-    func  getPersonalCode(by phoneNumber: String, clouser: (String?) -> Void){
-        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key),
-              let savedPhoneNumber = dictionary[keys.phoneNumber.rawValue] as? String,
-              let personalCode = dictionary[keys.personalCode.rawValue] as? String else {
-            return
-        }
-        savedPhoneNumber == phoneNumber ? clouser(personalCode) : clouser(nil)
-    }
-    
-    func checkPersonalCode(inputedCode: String, clouser: (Bool) -> Void) {
-        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key),
-              let savedPersonalCode = dictionary[keys.personalCode.rawValue] as? String else { return }
-        if savedPersonalCode == inputedCode{
-            clouser(true)
+    func changeLogin(on newLogin: String, clouser: (Bool) -> Void) {
+        guard var account = getAccount() else { return }
+        if account.login != newLogin {
+            account.login = newLogin
+            saveAccount(account) { isSaved in
+                isSaved == true ? clouser(true) : clouser(false)
+            }
         } else {
-            print("валидация кода не прошла")
             clouser(false)
         }
     }
+    
     
     func changePassword(on newPassword: String, clouser: (Bool) -> Void) {
         guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key),
@@ -80,11 +62,11 @@ class AuthorizationManager {
         if password != newPassword {
             do {
                 try Locksmith.updateData(data: [
-                                            keys.login.rawValue : login,
-                                            keys.phoneNumber.rawValue : phoneNumber,
-                                            keys.password.rawValue : newPassword,
-                                            keys.personalCode.rawValue : "\(Int.random(in: 1000...9999))"
-                                            ], forUserAccount: key)
+                    keys.login.rawValue : login,
+                    keys.phoneNumber.rawValue : phoneNumber,
+                    keys.password.rawValue : newPassword,
+                    keys.personalCode.rawValue : "\(Int.random(in: 1000...9999))"
+                ], forUserAccount: key)
                 clouser(true)
             } catch {
                 print(Error.self)
@@ -95,18 +77,60 @@ class AuthorizationManager {
         }
     }
     
+    func checkPersonalCode(inputedCode: String, clouser: (Bool) -> Void) {
+        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key),
+              let savedPersonalCode = dictionary[keys.personalCode.rawValue] as? String else { return }
+        if savedPersonalCode == inputedCode{
+            clouser(true)
+        } else {
+            clouser(false)
+        }
+    }
+    
+    func  getPersonalCode(by phoneNumber: String, clouser: (String?) -> Void){
+        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key),
+              let savedPhoneNumber = dictionary[keys.phoneNumber.rawValue] as? String,
+              let personalCode = dictionary[keys.personalCode.rawValue] as? String else {
+                  return
+              }
+        savedPhoneNumber == phoneNumber ? clouser(personalCode) : clouser(nil)
+    }
+    
     func printDictionary() {
         guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key) else { return }
         print(dictionary)
+    }
+    
+    func getAccountDict() -> [String : String] {
+        var autorizationData = ["" : ""]
+        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: key) as? [String : String] else {
+            return ["" : ""] }
+        for (key, value) in dictionary {
+            autorizationData[key] = value
+        }
+        return autorizationData
+    }
+    
+    func getAccount() -> Account? {
+        let accountDict = getAccountDict()
+        guard let login = accountDict[keys.login.rawValue],
+              let password = accountDict[keys.password.rawValue] else { return nil}
+        let account = Account(
+            login: login,
+            phoneNumber: accountDict[keys.phoneNumber.rawValue],
+            password: password,
+            personalCode: accountDict[keys.personalCode.rawValue]
+        )
+        return account
     }
     
     func deleteAccount() {
         do {
             try Locksmith.deleteDataForUserAccount(userAccount: "\(key)")
             DataManager.shared.accountWasDeleted()
-            print("аккаунт удален")
+            print("account deleted")
         } catch  {
-            print("не могу очистить")
+            print("failt to delete an account")
         }
     }
 }

@@ -1,12 +1,13 @@
 import UIKit
 
-class SignUpViewController: UIViewController {
+class UserSettingViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var eyeImage: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView!
     
     @IBOutlet weak var signUpButton: UIButton!
     
@@ -16,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var mainContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraintHeight: NSLayoutConstraint!
     
+    private let imagePicker = UIImagePickerController()
     private let minLength = 6
     private let maxNumberCount = 12
     private var regexPhoneNumber: NSRegularExpression {
@@ -27,10 +29,18 @@ class SignUpViewController: UIViewController {
             }
     }
     
+    private var userImage: UIImage? {
+        get {
+            guard let userImage = DataManager.shared.loadUserPhoto() else {
+                return UIImage(named: "userProfile")
+            }
+            return userImage
+        }
+    }
     private var isEyeOff = true
     private var initialConstraintHeight: CGFloat = 0
     private var inintialMainContainerHeight: CGFloat = 0
-    private var newAccount: Account!
+    private var account: Account?
     
     private lazy var regex = "^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{\(minLength),}$"
         
@@ -41,11 +51,15 @@ class SignUpViewController: UIViewController {
         inintialMainContainerHeight = mainContainerHeight.constant
         initialConstraintHeight = bottomConstraintHeight.constant
         registerForKeyboardNotifications()
+        setTextInTextFields()
+        addUserImageViewTap()
+        imagePicker.delegate = self
     }
     
     override func viewWillLayoutSubviews() {
         addGradient(views: view, signUpButton)
         setContanerViews(views: loginContainerView, phoneContainerView, passwordContainerView)
+        setUserProfilePhoto()
         signUpButton.layer.cornerRadius = 4
     }
     
@@ -53,8 +67,41 @@ class SignUpViewController: UIViewController {
         createNewAccount()
     }
     
-    @IBAction func haveAnAccountTouched() {
-        dismiss(animated: true, completion: nil)
+    private func setTextInTextFields() {
+        guard let account = AuthorizationManager.shared.getAccount() else { return }
+        self.account = account
+        loginTextField.text = account.login
+        phoneTextField.text = account.phoneNumber
+        passwordTextField.text = account.password
+    }
+    
+    private func addUserImageViewTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addPhotoTap(_:)))
+        userImageView.addGestureRecognizer(tap)
+        userImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func addPhotoTap(_ sender: UITapGestureRecognizer) {
+        let addPhotoAction = UIAlertController(title: "Photo Source", message: "Choose a sourse", preferredStyle: .actionSheet)
+        addPhotoAction.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }))
+        addPhotoAction.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { _ in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }))
+        addPhotoAction.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(addPhotoAction, animated: true, completion: nil)
+    }
+
+    private func setUserProfilePhoto() {
+        userImageView.image = userImage
+        userImageView.roundCorners(radius: userImageView.frame.size.width / 2)
+        userImageView.contentMode = .scaleAspectFill
+        userImageView.clipsToBounds = true
+        userImageView.layer.borderWidth = 3
+        userImageView.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     //MARK: Show or Hide passwordTF
@@ -116,8 +163,8 @@ class SignUpViewController: UIViewController {
         validatePassword(password)
         
         if !DataManager.shared.isAccountWasCreated() {
-            newAccount = Account(login: userName, phoneNumber: phoneNumber.digits, password: password)
-            guard let newAccount = newAccount else { return }
+            account = Account(login: userName, phoneNumber: phoneNumber.digits, password: password)
+            guard let newAccount = account else { return }
 
             AuthorizationManager.shared.saveAccount(newAccount, clouser: { isSaved in
                 if isSaved {
@@ -163,7 +210,7 @@ class SignUpViewController: UIViewController {
 }
 
 //MARK: Set UI
-extension SignUpViewController {
+extension UserSettingViewController {
     private func addGradient(views: UIView...) {
         views.forEach { $0.addGradient(
             startPointColor: #colorLiteral(red: 0.03529411765, green: 0.07450980392, blue: 0.3803921569, alpha: 1),
@@ -193,7 +240,7 @@ extension SignUpViewController {
 }
 
 // MARK: - textField methods
-extension SignUpViewController: UITextFieldDelegate {
+extension UserSettingViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
@@ -215,8 +262,8 @@ extension SignUpViewController: UITextFieldDelegate {
         guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         if notification.name == UIResponder.keyboardWillShowNotification {
-            mainContainerHeight.constant += keyboardFrame.height - bottomConstraintHeight.constant
-            bottomConstraintHeight.constant = keyboardFrame.height
+            mainContainerHeight.constant += keyboardFrame.height - bottomConstraintHeight.constant + 30
+            bottomConstraintHeight.constant = keyboardFrame.height + 30
             self.view.layoutIfNeeded()
         } else {
             mainContainerHeight.constant = inintialMainContainerHeight
@@ -244,5 +291,18 @@ extension SignUpViewController: UITextFieldDelegate {
         return true
     }
 }
+
+//MARK: UIImagePickerController
+extension UserSettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            imagePicker.dismiss(animated: true, completion: {() in
+                self.userImageView.image = pickedImage
+                DataManager.shared.saveUserPhoto(pickedImage)
+            })
+        }
+    }
+}
+
 
 
