@@ -4,9 +4,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    /*
     class func instanceFromNib() -> TransactionButtonView {
         return UINib(nibName: "TransactionButtonView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! TransactionButtonView
     }
+    */
 
     override func viewDidLoad() {
         super.viewDidLoad()

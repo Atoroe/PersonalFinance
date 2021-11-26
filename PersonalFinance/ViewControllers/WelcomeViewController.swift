@@ -14,7 +14,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if DataManager.shared.isPresentationViewed() {
-            showHomeVC()
+            //showHomeVC()
             showLoginViewController()
         } else {
             startPesentation()
