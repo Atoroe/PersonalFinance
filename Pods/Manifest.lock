@@ -2,21 +2,25 @@ PODS:
   - Charts (3.6.0):
     - Charts/Core (= 3.6.0)
   - Charts/Core (3.6.0)
+  - Hover (2.1.0)
   - Locksmith (4.0.0)
 
 DEPENDENCIES:
   - Charts
+  - Hover
   - Locksmith
 
 SPEC REPOS:
   trunk:
     - Charts
+    - Hover
     - Locksmith
 
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  Hover: b7821338bdaf54d0e46be24d603e443a869993e3
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
 
-PODFILE CHECKSUM: 6ac3ac4ed77aee3c56b928014ebebd8598047ce9
+PODFILE CHECKSUM: 451ac0b231a586e6cc5c619f1778b98f6ea5e5c9
 
 COCOAPODS: 1.8.4

@@ -14,8 +14,8 @@ class WelcomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if DataManager.shared.isPresentationViewed() {
+            showHomeVC()
             showLoginViewController()
-            //showHomeVC()
         } else {
             startPesentation()
         }
@@ -42,9 +42,6 @@ class WelcomeViewController: UIViewController {
     //MARK: - ЗАГЛУШКА
     private func showHomeVC() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//        guard let navigationVC = storyboard.instantiateViewController(withIdentifier: "HomeNavigationViewController") as? UINavigationController else { return }
-//        navigationVC.modalPresentationStyle = .fullScreen
-//        self.present(navigationVC, animated: true, completion: nil)
         guard let tabBarVC = storyboard.instantiateViewController(withIdentifier: "HomeTabBarController") as? UITabBarController else { return }
         tabBarVC.modalPresentationStyle = .fullScreen
         self.present(tabBarVC, animated: true, completion: nil)

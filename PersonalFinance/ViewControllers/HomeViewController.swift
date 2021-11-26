@@ -1,12 +1,16 @@
 import Charts
+import Hover
+import UIKit
 
 class HomeViewController: UIViewController {
-
     
+    class func instanceFromNib() -> TransactionButtonView {
+        return UINib(nibName: "TransactionButtonView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! TransactionButtonView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
+        setHoverButton()
     }
     
     override func viewWillLayoutSubviews() {
@@ -41,7 +45,49 @@ extension HomeViewController {
             view.layer.cornerRadius = 4
         }
     }
+    
+    private func addXib() {
+        if let TransactionButtonXib = Bundle.main.loadNibNamed("TransactionButtonView", owner: self, options: nil)?.first as? TransactionButtonView {
+            view.addSubview(TransactionButtonXib)
+        }
+    }
+    
+    private func setHoverButton() {
+        let hoverView = HoverView(with: HoverConfiguration(image: .share, color: .color(UIColor.hoverOrange)),
+                                                items: [
+                                                    HoverItem(title: "Add income",
+                                                              image: .income,
+                                                              color: .color(UIColor.hoverGreen)) {
+                                                                  self.showIncomeVC()},
+                                                    HoverItem(title: "Make a payment",
+                                                              image: .payment,
+                                                              color: .color(UIColor.hoverBlue)) {
+                                                                  self.showPaymentVC()}
+                                                        ])
+        view.addSubview(hoverView)
+        hoverView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(
+            [
+                hoverView.topAnchor.constraint(equalTo: view.topAnchor),
+                hoverView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                hoverView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                hoverView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ]
+        )
+    }
 }
+
+//MARK: Navigation
+extension HomeViewController {
+    private func showPaymentVC() {
+        print("Tapped 'Make a payment'")
+    }
+    
+    private func showIncomeVC() {
+        print("Tapped 'Add income'")
+    }
+}
+
 
 
 
